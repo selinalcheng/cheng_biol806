@@ -1,0 +1,30 @@
+---
+title: "Wake me up when...?: Understanding drivers of springtime awakening in eastern oysters (*Crassostrea virginica*)"
+author: Selina Cheng
+format: pdf
+indent: true
+---
+
+## Introduction
+
+*Objectives*
+
+## Methods
+
+*Data collection*
+
+
+The bivalve monitoring system was carried out at Jackson Estuarine Laboratory (JEL), Durham, NH, from November 2023 to September 2024. 15 bivalves consisting of oysters, mussels, and scallops were maintained in a seawater flow-through table, located in a greenhouse attached to the main laboratory. Water in the system came directly from the nearby Great Bay Estuary. Though the water is coarsely filtered to keep out large organisms, phytoplankton are permitted to pass through, providing a natural food source for organisms in the system . The system was cleaned weekly to prevent buildup of algae and other fouling organisms.
+  
+  
+The bivalve gaping data collection system was composed of a custom-built circuit board, run using an ELEGOO Mega 2560  microcontroller. The system was connected to and powered by a laptop, where data were taken continuously every 12 seconds using the serial terminal program CoolTerm. 15 magnetic Hall  effect sensors were attached to each bivalve via cable to monitor each individual’s shell gape behavior. The sensor was glued to one valve of the shell at the lip (furthest point from the hinge) using cyanoacrylate glue, while a small neodymium magnet was glued to the other valve, directly opposite from the sensor. Hall effect sensors read a voltage signal that is proportional to the strength of the magnetic field surrounding it; as the bivalves open and close their valves, the voltage detected by the sensor changes with the position of the magnet on the other valve. The valve gaping data reflect the voltage signal detected by the Hall effect sensors. Data were monitored weekly and sensors and magnets were replaced and reattached as needed. Data were subset to include only oysters with the most continuous data streams that encompassed December 2023 through May 2024. Some data streams were discontinued due to oyster mortality, while others were unable to be analyzed due to sensor malfunction.
+
+Temperature data were taken continuously in the system using an MX2202 Onset Pendant Temperature/Light Data Logger. Data were taken at a ten-minute interval until May 12, 2024. Afterwards, data were taken at a one-minute interval. 
+
+*Data cleaning and manipulation*
+
+*Statistical analyses*
+
+## Results
+
+## Discussion

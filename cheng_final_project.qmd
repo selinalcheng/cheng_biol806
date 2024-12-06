@@ -2,28 +2,468 @@
 title: "Wake me up when...?: Understanding drivers of springtime awakening in eastern oysters (*Crassostrea virginica*)"
 author: Selina Cheng
 format: pdf
-indent: true
 ---
+```{r whole doc setup, echo=FALSE, message = F}
+knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=40), tidy=TRUE)
+library(tidyverse)
+```
+[Github link to code](https://github.com/selinalcheng/cheng_biol806)
+\raggedright 
+\indent
+## Abstract
 
-## Introduction
+\noindent
+Eastern oysters (Crassostera virginica) are sessile, ecologically important bivalves that provide numerous ecosystem services, though their numbers have experienced a remarkable decline from historic populations. Understanding how they respond to environmental change is integral to their restoration and cultivation. Oyster overwintering activity and drivers of spring awakening remain poorly studied but are especially relevant to the success of oyster aquaculture farms, which have been increasing in number over the past decade. To resolve this gap, we examined the effects of water temperature, dissolved oxygen, salinity, and pH on various measures of oyster gaping behavior. We found that temperature may act as a primary cue for oysters to open, while dissolved oxygen may play an important role in predicting how long oysters are open for. These findings corroborate past work showing that temperature is important to oyster spring awakening, but also indicate that there may be more environmental variables at play.
 
+## Introduction 
+\begingroup \raggedright \setlength{\parindent}{0.25in} \indent
+\indent The eastern oyster (*Crassostrea virginica*) is an ecologically and economically important organism whose current numbers have been decimated compared to historic levels. Along the oyster's native range from the Gulf of Mexico to the Gulf of St. Lawrence, half of estuaries have as little as < 6% of historic reef extent due to fishing, disease, and environmental changes (Zu Ermgassen et al., 2012). Numerous efforts have been made to restore and cultivate oysters to recover lost ecosystems and contribute to the seafood industry (Hernandez et al., 2018; Parker & Bricker, 2020). Oyster aquaculture in particular has grown in the United States over the last decade -- the number of oyster farms increased from 483 in 2013 to 701 in 2018, with projections of continued increases (Posadas, 2023). Achieving oyster farm success remains challenging, as it can be difficult to monitor and ensure individual oyster survival especially in the event of harmful environmental conditions. Wintertime can be especially uncertain; as oysters grow inactive, farmers often leave them unattended for the season. Uncovering the drivers behind oyster awakening in the springtime will enable farmers to better predict when they should resume operations in the spring, possibly reducing mortality over the winter.
+
+
+In New England aquaculture operations, oyster bags or cages are often sunk to the seabed in late fall and left unattended over winter. The cages are brought back to the surface or off the bottom of the seabed after any winter ice cover has broken up and when temperatures rise again. Overwintering mortality of oysters can be significant, reaching as high as 48% (Grizzle et al., 2020). This mortality is typically attributed to burial, where bags may settle into soft sediment and may themselves cause sediment to accumulate by decreasing flow rates (Comeau, 2014; Comeau et al., 2017; Grizzle et al., 2020). At moderate levels of sedimentation (20 mm depth) oysters can clear sediment away by pumping their valves; at higher sedimentation, mortality sets in quickly (<2 weeks; Comeau, 2014). Once temperatures lower sufficiently (<5°C; Galtsoff, 1928), oyster gaping behavior ceases and they remain mostly dormant with the exception of some occasional, small openings to remove waste products and respirate (Mayrand et al. 2017; Pernet et al., 2007). In the spring, oysters begin displaying gaping behavior again, presumably to begin feeding (Comeau et al., 2012). However, awakening can be dangerous if oysters are buried under enough sediment, as gaping activity can clog their gills and lead to death (Comeau et al., 2017). 
+
+Measuring oyster valve gaping is key to understanding their behavioral responses. Gaping is indicative of feeding (Higgins, 1980a, 1980b), waste disposal (Mayrand et al., 2017), respiration (Casas et al., 2018), and responses to predation and other stressors (Carroll & Clements, 2019). Valve gape studies have long been used to monitor bivalve behavior, with the most well-known examples featuring bivalve responses to poor water quality (e.g., as in the Dutch Musselmonitor® system; Sluyts et al., 1996). Valve gape studies have increasingly been used to study oyster responses to additional environmental stressors, particularly in light of a changing environment. For example, studies have examined impacts of ocean acidification (Clements & Comeau, 2019), hypoxia (Coxe et al., 2023; Porter & Breitburg, 2016), extreme heat events (Clements et al., 2018), and exposure (Lombardi et al., 2013). However, few studies have investigated oyster overwintering and awakening behavior under normal conditions; those that have examined these questions have been limited to the Gulf of St. Lawrence, at the northernmost end of the species range (Comeau, 2014; Comeau et al., 2012, 2017).
+
+Previous studies on eastern oyster overwintering behavior identify a clear relationship between oyster awakening and temperature, with no effect of food availability or light on awakening (Comeau, 2014; Comeau et al., 2012). However, our data exploration failed to find such a clear relationship, suggesting that factors other than temperature, or an indirect relationship with temperature, may additionally explain oyster awakening behavior. Understanding what factors contribute to oyster awakening can help predict when they will begin moving again, allowing farmers to optimize operations and increase oyster survival through the winter (Comeau, 2014). 
+
+\noindent
 *Objectives*
+
+To resolve this gap in understanding how oysters awaken from winter inactivity, we analyzed oyster valve gaping behavior from a bivalve monitoring system and examined its relationship to water quality parameters known to influence gaping. The use of electronic sensors connected to data logging systems is particularly valuable for this type of work, allowing for continuous, high-frequency measurements of bivalve behavior (Miller, 2022). We specifically sought to investigate:
+
+1) How oyster gaping behavior changes with temperature, dissolved oxygen, pH, or salinity. 
+
+2) If gaping behavior has an indirect relationship with temperature (e.g., relates to a temperature threshold or lags behind temperature trends).
 
 ## Methods
 
 *Data collection*
 
-The bivalve monitoring system was carried out at Jackson Estuarine Laboratory (JEL), Durham, NH, from November 2023 to September 2024. 15 bivalves consisting of oysters, mussels, and scallops were maintained in a seawater flow-through table, located in a greenhouse attached to the main laboratory. Water in the system came directly from the nearby Great Bay Estuary. Though the water is coarsely filtered to keep out large organisms, phytoplankton are permitted to pass through, providing a natural food source for organisms in the system . The system was cleaned weekly to prevent buildup of algae and other fouling organisms.
+The bivalve monitoring system was carried out at Jackson Estuarine Laboratory (JEL), Durham, NH, from November 2023 to September 2024. 15 bivalves consisting of oysters, mussels, and scallops were maintained in a seawater flow-through table, located in a greenhouse attached to the main laboratory. Water in the system came directly from the nearby Great Bay Estuary. Though the water is coarsely filtered to keep out large organisms, phytoplankton are permitted to pass through, providing a natural food source for organisms in the system. The system was cleaned weekly to prevent buildup of algae and other fouling organisms.
 
-  
-The bivalve gaping data collection system was composed of a custom-built circuit board, run using an ELEGOO Mega 2560  microcontroller. The system was connected to and powered by a laptop, where data were taken continuously every 12 seconds using the serial terminal program CoolTerm. 15 magnetic Hall  effect sensors were attached to each bivalve via cable to monitor each individual’s shell gape behavior. The sensor was glued to one valve of the shell at the lip (furthest point from the hinge) using cyanoacrylate glue, while a small neodymium magnet was glued to the other valve, directly opposite from the sensor. Hall effect sensors read a voltage signal that is proportional to the strength of the magnetic field surrounding it; as the bivalves open and close their valves, the voltage detected by the sensor changes with the position of the magnet on the other valve. The valve gaping data reflect the voltage signal detected by the Hall effect sensors. Data were monitored weekly and sensors and magnets were replaced and reattached as needed. Data were subset to include only oysters with the most continuous data streams that encompassed December 2023 through May 2024. Some data streams were discontinued due to oyster mortality, while others were unable to be analyzed due to sensor malfunction.
+The bivalve gaping data collection system was composed of a custom-built circuit board, run using an ELEGOO Mega 2560 microcontroller. The system was connected to and powered by a laptop, where data were taken continuously every 12 seconds using the serial terminal program CoolTerm. 15 magnetic Hall effect sensors were attached to each bivalve via cable to monitor each individual’s shell gape behavior (Nagai et al., 2006). The sensor was glued to one valve of the shell at the lip (furthest point from the hinge) using cyanoacrylate glue, while a small neodymium magnet was glued to the other valve, directly opposite from the sensor. Hall effect sensors read a voltage signal that is proportional to the strength of the magnetic field surrounding it; as the bivalves open and close their valves, the voltage detected by the sensor changes with the position of the magnet on the other valve. The valve gaping data reflect the voltage signal detected by the Hall effect sensors. Data were monitored weekly and sensors and magnets were replaced and reattached as needed. Data were subset to examine one oyster that had the most continuous data stream and the least amount of sensor noise. 
 
-Temperature data were taken continuously in the system using an MX2202 Onset Pendant Temperature/Light Data Logger. Data were taken at a ten-minute interval until May 12, 2024. Afterwards, data were taken at a one-minute interval. 
+Temperature and light data were taken continuously in the system using an MX2202 Onset Pendant Temperature/Light Data Logger (Onset Computer Corporation, Massachusetts, USA). Data were taken at a ten-minute interval until May 12, 2024. Afterwards, data were taken at a one-minute interval. 
 
+A YSI EXO series sonde (Yellow Springs Instrument, Ohio, USA) was used to measure additional water quality parameters at depth in the estuary just outside of JEL from December 08, 2023 to April 15, 2024. Additional water quality data for the remainder of the time period were downloaded from a sonde located nearby in Great Bay (43.07220°N, 70.86940°W; NOAA NERRS). The additional parameters include temperature, dissolved oxygen, salinity, and pH. The data represent instantaneous measurements that were taken every 15 minutes.  
+
+\noindent
 *Data cleaning and manipulation*
 
+All data cleaning and statistical analyses were conducted in R 4.4.1 (R Core Team, 2024). Valve gaping data were averaged to one-minute intervals, which removed some noise but retained the integrity of brief valve closing events that lasted less than one minute. For the oyster chosen, higher voltage represented “closed” events while lower voltage represented “open” events. Whether the oyster was “closed” or “open” was assigned based on each 36-hour moving window, as baseline values changed periodically. For each 36-hour moving window, we identified a threshold at 70% of maximum values. Values above this threshold were considered “closed” while values below this threshold were considered “open”. Various thresholds were tested and confirmed by visual examination of the data, and a threshold at 70% of maximum was the most successful at identifying the correct oyster status. For periods where the oyster was closed or open for >36 hours, the above method incorrectly identified oyster status. As a result, we added an additional step: if variability within the time period was low, the oyster was identified as “closed” when the value was above a rough midpoint line drawn through the data. The oyster was considered “open” if values were below the rough midpoint line. Low variability was identified if a moving 24-hour standard deviation was too low, or if the moving 6-hour 95th and 5th percentile values were within 2 mV of each other. After assigning status in this way, the data were visually examined and one more round of corrections was applied. If values erroneously flipped between “open” and “closed” repeatedly, the status was reassigned to the status that occurred prior to the oscillation. We also removed rows where just one data point was assigned incorrectly, as those rows represented noise rather than actual data. Using the cleaned oyster data, we summarized the number of times the oyster switched statuses between “open” and “closed” per day, as well as the length of time the oyster was open each time it was open. 
+
+Temperature and water quality data that were taken at 10- and 15-minute intervals were converted to one-minute data by linearly interpolating between data points. This allowed the data to be matched up with the one-minute valve gaping data. We filled in missing temperature data from the indoor Onset logger with the Great Bay sonde data by modeling available Onset data on the Great Bay data. The slope and intercept of the linear model were then used to calculate the likely Onset values for the remainder of the timeseries. 
+
+For temperature data, we created additional variables representing a one-day temperature lag, two-day temperature lag, etc., up to a seven-day temperature lag, to assess whether oyster behavior lagged temperature trends. We also created a variable representing the number of continuous days above 3.2°C, which is the upper limit of the eastern oyster awakening threshold previously identified by Comeau (2014). 
+
+\noindent
 *Statistical analyses*
+
+We fit several models to relate oyster gaping variables to environmental predictors. Specifically, we estimated the effects of temperature, dissolved oxygen, salinity, and pH on the probability of an oyster being open or closed, the number of times an oyster switched between being open or closed each day, and how long an oyster was open each time it was open. 
+
+We modeled the probability that an oyster was open or closed using a binomial generalized linear model (GLM) (logit link, *n* = 391772 observations). We analyzed the number of times an oyster switched between being open or closed each day by using a negative binomial GLM (log link, *n* = 280 days). Using a negative binomial GLM, we also modeled how long an oyster was open each time it was open (*n* = 466 “open” events). Models were fit using *MASS* 7.3.61 (Venables & Ripley, 2002). Terms that were not significant at the *p* < 0.05 level were dropped from models, and best-performing models were selected based on the lowest AIC values. We assessed multicollinearity between model terms using the variance inflation factor (VIF). In all models, multicollinearity was low (VIF $\leq$ 4.17). We estimated predictions and 95% confidence intervals (CIs) using *ggeffects* 1.7.2 (Lüdecke, 2018).
 
 ## Results
 
+```{r set up code, echo=F, eval=T, message = F, warning = F}
+library(tidyverse)
+library(lubridate)
+library(data.table)
+library(patchwork)
+library(MASS)
+library(kableExtra)
+library(ggeffects)
+
+# Set theme
+selina_theme <- function(text_size){
+  theme_classic()+
+    theme(panel.grid.major.y = element_line(colour = "#ececec"),
+          panel.grid.major.x = element_line(color = "#ececec"),
+          text = element_text(size = (text_size + 1)),
+          axis.text.x = element_text(margin=margin(0.25,0.25,0.25,0.25, "cm"), color = "black", size = text_size, angle = 45, hjust = 1, vjust = 1),
+          axis.text.y = element_text(margin=margin(0.25,0.25,0.25,0.25, "cm"), color = "black", size = text_size),
+          axis.line.x = element_line(color="black", linewidth = 0.5),
+          axis.line.y = element_line(color="black", linewidth = 0.5),
+          axis.ticks = element_line(linewidth = 0.5, color = "black"),
+          axis.ticks.length = unit(0.25, "cm"),
+          axis.title.x = element_text(vjust= -1),
+          legend.title = element_text(size = (text_size +1)),
+          legend.text = element_text(size = text_size),
+          strip.placement = "outside",
+          strip.text = element_text(color = "#000", size = text_size),
+          strip.switch.pad.grid = unit(0.2, "cm"),
+          strip.background.y = element_rect(fill = "#fff", color = "#fff"))
+}
+
+# Set source directory
+source_dir <- "~/Library/CloudStorage/OneDrive-USNH/Oyster Biosensor/0_InProgressExperiments/2023 - 2024 Continuous system on oysters and mussels/2c_data for analysis"
+
+# Read data
+oyster_dat_1min <- fread(list.files(source_dir, pattern = "1min", full.names = T))
+oyster_dat_event <- fread(list.files(source_dir, pattern = "event", full.names = T))
+oyster_dat_daily <- fread(list.files(source_dir, pattern = "daily", full.names=T))
+```
+\indent
+Temperature during the study period ranged from `r round(min(oyster_dat_1min$temp_c), digits = 2)`°C to `r round(max(oyster_dat_1min$temp_c), digits=2)`°C (mean = `r round(mean(oyster_dat_1min$temp_c), digits=2)`°C). Dissolved oxygen ranged from `r round(min(oyster_dat_1min$do_mgl),digits=2)` mg/L to `r round(max(oyster_dat_1min$do_mgl),digits=2)` mg/L (mean = `r round(mean(oyster_dat_1min$do_mgl),digits=2)` mg/L). Salinity ranged from `r round(min(oyster_dat_1min$sal_ppt),digits=2)` ppt to `r round(max(oyster_dat_1min$sal_ppt),digits=2)` ppt (mean = `r round(mean(oyster_dat_1min$sal_ppt),digits=2)`). pH ranged from `r round(min(oyster_dat_1min$ph),digits=2)` to `r round(max(oyster_dat_1min$ph),digits=2)` (mean = `r round(mean(oyster_dat_1min$ph),digits=2)`) (Figure 1).
+
+```{r fig1, echo=F, eval=T, message = F, warning = F, fig.height = 8, fig.width = 7}
+# Reshape and select cols
+wq_vars <- oyster_dat_1min %>%
+  dplyr::select(minute_floor_est, temp_c, do_mgl, sal_ppt, ph) %>%
+  pivot_longer(cols = temp_c:ph, names_to = "parameter", values_to = "value")
+
+var_names <- c("temp_c" = "Temperature (°C)", "do_mgl" = "Dissolved oxygen (mg/L)",
+                              "sal_ppt" = "Salinity (ppt)", "ph" = "pH")
+
+# Create ggplot
+ggplot(data = wq_vars, aes(x = minute_floor_est, y = value))+
+  geom_point()+
+  scale_x_datetime(date_breaks = "1 month",
+                   date_labels="%b-%Y") +
+  facet_wrap(~parameter, ncol = 1, scales = "free_y", switch = "y", labeller=as_labeller(var_names))+
+  labs(x="Time", y= "")+
+  scale_y_continuous(limits = ~ c(min(.x)-(max(.x)-min(.x))*.1,
+                                  (max(.x)+(max(.x)-min(.x))*.1)),
+                     breaks = ~ if(max(.x)-min(.x) < 5){round(seq(from = min(.x), to = max(.x), length.out = 6), digits = 1)}
+                     else if(max(.x)-min(.x)>20){c(5, 10, 15, 20, 25, 30)}
+                     else{ceiling((seq(from = min(.x)+1, to = max(.x), length.out = 5)))},
+                     expand = c(0, 0))+
+  selina_theme(10)
+
+```
+\noindent
+Figure 1. Time series of water quality parameters. From the top, figures show dissolved oxygen (mg/L), pH, salinity (ppt), and temperature (°C).
+
+The data cleaning method was successful with minimal error, identifying `r length(which(oyster_dat_1min$new_status == "closed"))` "closed" data points and `r length(which(oyster_dat_1min$new_status == "open"))` "open" data points (Figure 2). Of these data points, there were `r length(which(grepl("closed", oyster_dat_event$event_id)))` discrete "closed" events and `r length(which(grepl("open", oyster_dat_event$event_id)))` discrete "open" events. 
+
+![]("figures/figure1.png")
+Figure 2. Time series of oyster gaping data, measured in millivolts. A) shows one example week of data in June while B) represents the entire time series that was used for modeling. Whether the oyster was assigned "open" or "closed" is indicated by either red or blue dots, respectively.
+
+```{r 1min_model, echo = F, message = F, results='hide'}
+# Models for each dataset
+oyster_dat_1min$status_numeric <- ifelse(oyster_dat_1min$new_status == "open", 1, 0)
+
+# AIC of full model is the lowest, pseudo R^2 is also the highest
+# All variables are significant
+mod_1min <- glm(formula = status_numeric ~ temp_c + sal_ppt + ph, data = oyster_dat_1min, 
+            family = "binomial")
+
+# Look at exponentiated coefficients
+exp(mod_1min$coefficients)
+```
+
+\noindent
+*Probability of oyster being open*
+
+The probability of an oyster being open was positively correlated with temperature and pH, and was negatively correlated with salinity (*p* < 0.001 for all predictors; formula =  *status_numeric ~ temp_c + sal_ppt + ph*; McFadden's $R^2$= `r round(1-(mod_1min$deviance/mod_1min$null.deviance), digits = 2)`; Figure 3; Table 1). Temperature at the time of oyster activity was a better predictor than any of the lag predictors that we looked at. In other words, there was no day-to-day lag effect between oyster behavior and temperature (up to 7 day lag). Holding all else equal, for each 1°C increase in temperature, the odds that an oyster will be open increases by 31%. When all other predictors are constant, for each 1 ppt increase in salinity, the odds that an oyster will be open decreases by 15.5%. Though the relationship with pH was significant, the model estimates are unrealistic for the range of pH that would occur (a one unit increase in pH [rare] would result in the odds of being open multiplying by 3600).
+
+```{r fig3, echo = F, message = F, fig.width=8}
+selina_theme2 <- function(text_size){
+  theme_classic()+
+    theme(panel.grid.major.y = element_line(colour = "#ececec"),
+          panel.grid.major.x = element_line(color = "#ececec"),
+          text = element_text(size = (text_size + 1)),
+          axis.text.x = element_text(margin=margin(0.25,0.25,0.25,0.25, "cm"), color = "black", size = text_size),
+          axis.text.y = element_text(margin=margin(0.25,0.25,0.25,0.25, "cm"), color = "black", size = text_size),
+          axis.line.x = element_line(color="black", linewidth = 0.5),
+          axis.line.y = element_line(color="black", linewidth = 0.5),
+          axis.ticks = element_line(linewidth = 0.5, color = "black"),
+          axis.ticks.length = unit(0.25, "cm"),
+          axis.title.x = element_text(vjust= -1),
+          legend.title = element_text(size = (text_size +1)),
+          legend.text = element_text(size = text_size),
+          strip.placement = "outside",
+          strip.text = element_text(color = "#000", size = text_size),
+          strip.switch.pad.grid = unit(0.2, "cm"),
+          strip.background.y = element_rect(fill = "#fff", color = "#fff"))
+}
+temp_preds_1min <- predict_response(mod_1min, terms = c("temp_c [all]"))
+
+p1 <- ggplot()+
+  geom_point(data = oyster_dat_1min, aes(x = temp_c, y = status_numeric), alpha = 0.1)+
+  geom_ribbon(data = temp_preds_1min, aes(x = x, ymin = conf.low, ymax = conf.high), fill = "grey", alpha = 0.5)+ 
+  geom_line(data = temp_preds_1min, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm", method.args = list(family=binomial), se = TRUE)+
+  annotate("text", x = 2, y = 0.9, label = "A", size = 6)+
+  labs(x = "Temperature (°C)", y = "Probability of being open")+
+  scale_x_continuous(limits = c(1, 28), breaks = c(0, 5, 10, 15, 20, 25, 30))+
+  selina_theme2(10)
+
+sal_preds_1min <- predict_response(mod_1min, terms = c("sal_ppt [all]"))
+
+p2 <- ggplot()+
+  geom_point(data = oyster_dat_1min, aes(x = sal_ppt, y = status_numeric), alpha = 0.1)+
+  geom_ribbon(data = sal_preds_1min, aes(x = x, ymin = conf.low, ymax = conf.high), fill = "grey", alpha = 0.5)+ 
+  geom_line(data = sal_preds_1min, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm", method.args = list(family=binomial), se = TRUE)+
+    labs(x = "Salinity (ppt)", y = "Probability of being open")+
+  annotate("text", x = 6.5, y = 0.9, label = "B", size = 6)+
+    scale_x_continuous(limits = c(6, 31), breaks = c(10, 15, 20, 25, 30))+
+   selina_theme2(10)
+
+p1|p2
+
+```
+
+\noindent
+Figure 3. The probability of an oyster being open in relation to A) temperature and B) salinity. Lines show mean model predictions after controlling for other predictors.
+
+```{r daily model, echo = F, message = F, results = 'hide'}
+# Daily model
+mod_daily <- glm.nb(formula = num_switch_event ~ mean_temp_c + mean_sal + mean_ph, data = oyster_dat_daily)
+
+# Look at exponentiated coefficients
+exp(mod_daily$coefficients)
+
+```
+
+\noindent
+*Oyster activity*
+
+The number of times an oyster switched between being open and closed each day was also positively correlated with temperature and pH (*p* < 0.001), and was negatively correlated with salinity (*p* < 0.01; formula = *num_switch_event ~ mean_temp_c + mean_sal + mean_ph*; McFadden's $R^2$= `r round(1-(mod_daily$deviance/mod_daily$null.deviance), digits=2)`; Figure 4; Table 1). There was no daily lag effect between oyster behavior and temperature. When all other variables are held constant, for every 1°C increase in temperature, the number of times an oyster switches between being open and closed increases by 25%. For every 1 ppt increase in salinity when all other variables are held constant, the number of times an oyster switches decreases by 6%. As with the previous model, the interpretation of the coefficient for pH is unrealistic -- the model indicates that for every 1 unit increase in pH, the number of times an oyster switches should multiply by 350.
+
+```{r fig4, echo = F, message = F, fig.height=6, fig.width = 7}
+temp_preds_daily <- predict_response(mod_daily, terms = c("mean_temp_c [all]"))
+
+p1 <- ggplot()+
+  geom_point(data = oyster_dat_daily, aes(x = mean_temp_c, y = num_switch_event), alpha = 0.6)+
+  geom_ribbon(data = temp_preds_daily, aes(x = x, ymin = conf.low, ymax = conf.high), 
+              fill = "grey", alpha = 0.5)+ 
+  geom_line(data = temp_preds_daily, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm.nb", se = TRUE)+
+  annotate("text", x = 3, y = 23, label = "A", size = 6)+
+  labs(x = "Temperature (°C)", y = "Number of switches")+
+  scale_x_continuous(breaks = c(0, 5, 10, 15, 20, 25, 30))+
+  scale_y_continuous(limits = c(0, 24))+
+  selina_theme2(10)
+
+sal_preds_daily <- predict_response(mod_daily, terms = c("mean_sal [all]"))
+
+p2 <- ggplot()+
+  geom_point(data = oyster_dat_daily, aes(x = mean_sal, y = num_switch_event), alpha = 0.6)+
+  geom_ribbon(data = sal_preds_daily, aes(x = x, ymin = conf.low, ymax = conf.high), 
+              fill = "grey", alpha = 0.5)+ 
+  geom_line(data = sal_preds_daily, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm.nb", se = TRUE)+
+  labs(x = "Salinity (ppt)", y = "Number of switches")+
+  annotate("text", x = 10, y = 23, label = "B", size = 6)+
+    scale_x_continuous(breaks = c(10, 15, 20, 25, 30))+
+  scale_y_continuous(limits = c(0, 24))+
+   selina_theme2(10)
+
+ph_preds_daily <- predict_response(mod_daily, terms = c("mean_ph [all]"))
+
+p3 <- ggplot()+
+  geom_point(data = oyster_dat_daily, aes(x = mean_ph, y = num_switch_event), alpha = 0.6)+
+    geom_ribbon(data = ph_preds_daily, aes(x = x, ymin = conf.low, ymax = conf.high), 
+              fill = "grey", alpha = 0.5)+ 
+  geom_line(data = ph_preds_daily, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm.nb", se = TRUE)+
+    labs(x = "pH", y = "Number of switches")+
+  annotate("text", x = 7.55, y = 23, label = "C", size = 6)+
+    scale_x_continuous(breaks = c(7.6, 7.7, 7.8, 7.9, 8.0, 8.1))+
+  scale_y_continuous(limits = c(0, 24))+
+   selina_theme2(10)
+
+design <- "
+  1122
+  #33#"
+
+p1 + p2 + wrap_elements(full = p3) + plot_layout(design = design, widths = 1)
+```
+
+\noindent
+Figure 4. Number of times an oyster switched between "open" and "closed" states in relation to A) temperature and B) salinity. Lines as in Figure 3. Shading shows 95% confidence intervals after controlling for other predictors. Data points represent actual data and are transparent to show overlap. 
+
+```{r event model, echo = F, message = F, results = 'hide'}
+oyster_dat_event <- oyster_dat_event %>%
+  filter(grepl("open", event_id))
+
+mod_event <- glm.nb(formula = length_minute ~ mean_do + mean_ph, data = oyster_dat_event)
+
+# Look at exponentiated coefficients
+exp(mod_event$coefficients)
+```
+
+When an oyster was open, the length of time it was open was positively correlated with dissolved oxygen concentration (*p* < 0.001) and negatively correlated with pH (*p* < 0.01; formula = *length_minute ~ mean_do + mean_ph*; McFadden's $R^2$ = `r round(1-(mod_event$deviance/mod_event$null.deviance),digits=2)`; Figure 5; Table 1). Dissolved oxygen and temperature were highly correlated, so we could not include both terms in the model. Dissolved oxygen performed better than any temperature variables in the model; however, of the temperature variables, a temperature lag of 4 days performed the best, indicating that there may be some lag effect of temperature that determines how long oysters are open for. The model indicated that for every 1 mg/L increase in dissolved oxygen concentration, an oyster will be open for 40% longer. For every 1 unit increase in pH, an oyster will be open for 78% less time.
+
+```{r fig5, echo = F, message = F, fig.width=8}
+do_preds_event <- predict_response(mod_event, terms = c("mean_do [all]"))
+
+p1 <- ggplot()+
+  geom_point(data = oyster_dat_event, aes(x = mean_do, y = length_minute), alpha = 0.6)+
+  geom_ribbon(data = do_preds_event, aes(x = x, ymin = conf.low, ymax = conf.high), 
+              fill = "grey", alpha = 0.5)+ 
+  geom_line(data = do_preds_event, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm.nb", se = TRUE)+
+  annotate("text", x = 6.5, y = 2800, label = "A", size = 6)+
+  labs(x = "Dissolved oxygen (mg/L)", y = "Amount of time open (min)")+
+  scale_x_continuous(breaks = c(6, 8, 10, 12))+
+  selina_theme2(10)
+
+ph_preds_event <- predict_response(mod_event, terms = c("mean_ph [all]"))
+
+p2 <- ggplot()+
+  geom_point(data = oyster_dat_event, aes(x = mean_ph, y = length_minute), alpha = 0.6)+
+  geom_ribbon(data = ph_preds_event, aes(x = x, ymin = conf.low, ymax = conf.high), 
+              fill = "grey", alpha = 0.5)+ 
+  geom_line(data = ph_preds_event, aes(y = predicted, x = x), color = 'blue', linewidth = 1.5) +
+  # stat_smooth(method = "glm.nb", se = TRUE)+
+    labs(x = "pH", y = "Amount of time open (min)")+
+  annotate("text", x = 7.72, y = 2800, label = "B", size = 6)+
+    scale_x_continuous(limits = c(7.7, 8.15), breaks = c(7.7, 7.8, 7.9, 8.0, 8.1))+
+   selina_theme2(10)
+
+p1|p2
+```
+
+\noindent
+Figure 5. For each time an oyster was open, the length of time it was open in relation to A) dissolved oxygen and B) pH. Lines, shading, and points as in Figure 4.
+
+\noindent
+Table 1. Summary of generalized linear models examining the effects of water quality variables (temperature, dissolved oxygen, salinity, pH) on oyster activity. The number of observations (*n*) included in each model is indicated next to each response variable. 
+
+```{r, echo = F, message = F}
+# mod_1min
+# mod_daily
+# mod_event
+sum_1min <- summary(mod_1min)
+sum_daily <- summary(mod_daily)
+sum_event <- summary(mod_event)
+
+sci_not <- function(x){
+  y <- formatC(x, format = "e", digits = 2)
+  # y <- gsub("e", "\u00D7$10^", y)
+  # y <- paste0(y, "$")
+  return(y)
+}
+
+table1 <- data.frame(Predictor = c("Temperature", "Salinity", "pH",
+                                   "Temperature", "Salinity", "pH",
+                                   "Dissolved oxygen", "pH"),
+                     Estimate = c(round(sum_1min$coef[2], digits = 2), round(sum_1min$coef[3], digits = 2), 
+                                  round(sum_1min$coef[4], digits = 2),
+                                  round(sum_daily$coef[2], digits = 2), round(sum_daily$coef[3], digits =2),
+                                  round(sum_daily$coef[4], digits=2),
+                                  round(sum_event$coef[2], digits=2), round(sum_event$coef[3], digits=2)),
+                     SE = c(round(sum_1min$coef[6], digits=3), round(sum_1min$coef[7], digits=3),
+                            round(sum_1min$coef[8], digits=2),
+                            round(sum_daily$coef[6], digits=2), round(sum_daily$coef[7], digits=2),
+                            round(sum_daily$coef[8], digits=2),
+                            round(sum_event$coef[5], digits=2), round(sum_event$coef[6], digits=2)),
+                     `P value` = c(sci_not(sum_1min$coef[14]), sci_not(sum_1min$coef[15]),
+                               sci_not(sum_1min$coef[16]),
+                               sci_not(sum_daily$coef[14]), sci_not(sum_daily$coef[15]),
+                               sci_not(sum_daily$coef[16]), 
+                               sci_not(sum_event$coef[11]), sci_not(sum_event$coef[12])))
+
+# Print table?
+table1 %>%
+  knitr::kable(table.attr = "style='width:100%;'", escape = T, format = "pipe",
+               col.names = c("Predictor",
+                           "Estimate",
+                           "SE",
+                           "P value")) %>%
+  group_rows("Probability of oyster being open (n = 391772 obs)", 1, 3) %>%
+  group_rows("Number of switches (n = 280 days)", 4, 6) %>%
+  group_rows("Length of time open (n = 466 open events)", 7, 8) %>%
+  column_spec(1, "4in") %>%
+  column_spec(2, "0.5in") %>%
+  column_spec(3, "0.5in") %>%
+  column_spec(4, "0.8in")
+
+```
+
+
+```{r length of opening time vs time, echo = F, message = F}
+ggplot()+
+  geom_point(data = oyster_dat_event, aes(x = start_time, y = length_minute), alpha = 0.6)+
+  labs(x = "Start date of event", y = "Amount of time open (min)")+
+  scale_x_datetime(date_breaks = "1 month", 
+                   date_labels="%b-%Y") +
+  selina_theme(10)
+```
+\noindent
+Figure 6. Time series figure of oyster opening duration each time it was open. Points transparent to show overlap.
+
 ## Discussion
+\indent
+Our results largely seem to agree with past studies in that oyster behavior appears to be driven primarily by temperature (Comeau, 2014; Comeau et al., 2012). Temperature at the time of activity did relatively well at predicting the probability of an oyster being open and the number of times an oyster switched states, explaining more than half of the variation explained by the full model. Temperature at the time of activity was also a better predictor of these two response variables compared to lagged temperature and the amount of time an oyster spent above the temperature threshold of 3.2°C (Comeau, 2014). Temperature did not fully explain oyster behavior, as both the probability of an oyster being open and the number of times an oyster switched states were also significantly influenced by salinity. Though salinity may be related to temperature (e.g., high temperatures in late summer may increase salinity due to evaporation), freshwater input and precipitation are likely more prominent drivers of salinity and may be useful to include in future models (Mallick & Dunn, 2024). 
+
+We did not find that temperature was a good predictor of how long oysters stay open. Dissolved oxygen was a stronger predictor than temperature was, though the two variables are correlated. This result indicates that while temperature may stimulate oyster opening, dissolved oxygen is a better predictor of opening duration (though the pseudo-$R^2$ calculated was low). This finding may be especially applicable during colder time periods. During rare periods of opening in the winter and leading up to the spring, oysters are open for longer, likely to take in oxygen and remove waste products (Figure 6). Our finding that wintering oysters open occasionally, possibly to intake oxygen, agrees with past work showing that oysters perform aerobic metabolic processes during the winter (Mayrand et al. 2017). Comeau et al. (2012) found that when oysters did open in the winter, they were open by a very small amount (0.49°). We did not calibrate sensor voltage with degree of openness, so cannot make any determination of oyster winter openness from our data. However, the magnitude of voltage changes during our winter opening events appear to be similar to summer events. Further work examining the relation between sensor voltage and degree of openness would help clarify this finding. The low pseudo-$R^2$ of the dissolved oxygen model may also indicate that there are other predictors of oyster opening duration that we did not measure. A 4-day temperature lag was the best-predicting temperature variable, so there may be some indirect effect of temperature that we did not account for.
+
+Our results relating pH to oyster behavior are likely not applicable beyond our dataset. Though two models found a significant relationship between oyster behavior and pH, model estimates went far beyond the realm of likelihood – for example, multiplying odds by 3600 with each one-unit increase in pH likely does not reflect the true relationship between oyster behavior and pH. The range of pH measured in the study may not have been large enough to induce behavioral changes in oysters compared to other variables. The pH values during the time of our study were not particularly stressful to oysters – even the lowest measurement in the study (7.4) is higher than or at the upper range of what previous studies have used for ocean acidification treatments (Clements et al., 2018; Clements & Comeau, 2019). 
+
+\noindent
+*Conclusion and future work*
+
+Our findings largely agree with past work showing that temperature is a cue for oyster spring awakening. We also found that dissolved oxygen may play an important role in how long oysters stay open, and suspect that there are still indirect relationships between oysters and temperature, as well as with other environmental variables. Further work needs to be done to understand the relationships between oyster behavior and water quality variables, as well as other possible confounding variables. In particular, we were unable to disentangle the effects of temporal autocorrelation in our models. We also did not have enough data available to examine the effects of food availability and light on oyster behavior, though oysters have been shown to respond to photoperiod (Comeau et al. 2012). Sample size should be increased beyond just one oyster to understand more general relationships, especially because individual oyster behavior can vary widely. In the future, we also hope to perform experiments to demonstrate the relationship between sensor voltage and distance between oyster valves. 
+
+## References
+
+\begingroup
+\setlength{\parindent}{-0.25in}
+\setlength{\leftskip}{0.25in}
+\setlength{\parskip}{8pt}
+\indent
+Carroll, J. M., & Clements, J. C. (2019). Scaredy-Oysters: In Situ Documentation of an Oyster Behavioral Response to Predators. Southeastern Naturalist, 18(3). https://doi.org/10.1656/058.018.0303
+
+Casas, S. M., Lavaud, R., La Peyre, M. K., Comeau, L. A., Filgueira, R., & La Peyre, J. F. (2018). Quantifying salinity and season effects on eastern oyster clearance and oxygen consumption rates. Marine Biology, 165(5), 90. https://doi.org/10.1007/s00227-018-3351-x
+
+Clements, J. C., & Comeau, L. A. (2019). Use of High-Frequency Noninvasive Electromagnetic Biosensors to Detect Ocean Acidification Effects on Shellfish Behavior. Journal of Shellfish Research, 38(3), 811–818. https://doi.org/10.2983/035.038.0330
+
+Clements, J. C., Comeau, L. A., Carver, C. E., Mayrand, É., Plante, S., & Mallet, A. L. (2018). Short-term exposure to elevated pCO2 does not affect the valve gaping response of adult eastern oysters, Crassostrea virginica, to acute heat shock under an ad libitum feeding regime. Journal of Experimental Marine Biology and Ecology, 506, 9–17. https://doi.org/10.1016/j.jembe.2018.05.005
+
+Comeau, L. A. (2014). Spring awakening temperature and survival of sediment-covered eastern oysters Crassostrea virginica. Aquaculture, 430, 188–194. https://doi.org/10.1016/j.aquaculture.2014.04.009
+
+Comeau, L. A., Mallet, A., Carver, C., Nadalini, J.-B., & Tremblay, R. (2017). Behavioural and lethal effects of sediment burial on quiescent Eastern oysters Crassostrea virginica. Aquaculture, 469, 9–15. https://doi.org/10.1016/j.aquaculture.2016.11.038
+
+Comeau, L. A., Mayrand, É., & Mallet, A. (2012). Winter quiescence and spring awakening of the Eastern oyster Crassostrea virginica at its northernmost distribution limit. Marine Biology, 159, 2269–2279. https://doi.org/10.1007/s00227-012-2012-8
+
+Coxe, N., Casas, S. M., Marshall, D. A., La Peyre, M. K., Kelly, M. W., & La Peyre, J. F. (2023). Differential hypoxia tolerance of eastern oysters from the northern Gulf of Mexico at elevated temperature. Journal of Experimental Marine Biology and Ecology, 559, 151840. https://doi.org/10.1016/j.jembe.2022.151840
+
+Galtsoff, P. S. (1928). The effect of temperature on the mechanical activity of the gills of the oyster (Ostrea virginica Gm.). The Journal of General Physiology, 11(4), 415–431. https://doi.org/10.1085/jgp.11.4.415
+
+Grizzle, R., Ward, K., Burdick, D., Payne, A., & Berlinsky, D. (2020). Eastern Oyster Crassostrea virginica Growth and Mortality in New Hampshire (USA) Using Off-Bottom Farm Gear. North American Journal of Aquaculture, 82(2), 132–142. https://doi.org/10.1002/naaq.10135
+
+Hernandez, A. B., Brumbaugh, R. D., Frederick, P., Grizzle, R., Luckenbach, M. W., Peterson, C. H., & Angelini, C. (2018). Restoring the eastern oyster: How much progress has been made in 53 years? Frontiers in Ecology and the Environment, 16(8), 463–470. https://doi.org/10.1002/fee.1935
+
+Higgins, P. J. (1980a). Effects of food availability on the valve movements and feeding behavior of juvenile Crassostrea Virginica (Gmelin). I. Valve movements and periodic activity. Journal of Experimental Marine Biology and Ecology, 45(2), 229–244. https://doi.org/10.1016/0022-0981(80)90060-X
+
+Higgins, P. J. (1980b). Effects of food availability on the valve movements and feeding behavior of juvenile Crassostrea virginica (Gmelin). II. Feeding rates and behavior. Journal of Experimental Marine Biology and Ecology, 46(1), 17–27. https://doi.org/10.1016/0022-0981(80)90087-8
+
+Lombardi, S. A., Harlan, N. P., & Paynter, K. T. (2013). Survival, Acid—Base Balance, and Gaping Responses of the Asian Oyster Crassostrea ariakensis and the Eastern Oyster Crassostrea virginica During Clamped Emersion and Hypoxic Immersion. Journal of Shellfish Research, 32(2), 409–415. https://doi.org/10.2983/035.032.0221
+
+Lüdecke D (2018). “ggeffects: Tidy Data Frames of Marginal Effects from Regression Models.” Journal of Open Source Software, 3(26), 772. doi:10.21105/joss.00772.
+
+Mallick, N., & Dunn, R. P. (2024). Environmental Conditions in Estuaries of the Southeast United States: Long-Term Trends and Seasonal Drivers. Ocean-Land-Atmosphere Research, 3, 0070. https://doi.org/10.34133/olar.0070
+
+Mayrand, E., Comeau, L. A., & Mallet, A. (2017). Physiological changes during overwintering of the Eastern oyster Crassostrea virginica (Gmelin, 1791). JOURNAL OF MOLLUSCAN STUDIES, 83, 333–339. https://doi.org/10.1093/mollus/eyx017
+
+Miller, L. P. (2022). Monitoring Bivalve Behavior and Physiology in the Laboratory and Field Using Open-Source Tools. Integrative and Comparative Biology, 62(4), 1096–1110. https://doi.org/10.1093/icb/icac046
+
+Nagai, K., Honjo, T., Go, J., Yamashita, H., & Seok Jin Oh. (2006). Detecting the shellfish killer Heterocapsa circularisquama (Dinophyceae) by measuring bivalve valve activity with a Hall element sensor. Aquaculture, 255(1), 395–401. https://doi.org/10.1016/j.aquaculture.2005.12.018
+
+NOAA National Estuarine Research Reserve System (NERRS). System-wide Monitoring Program. Data accessed from the NOAA NERRS Centralized Data Management Office website: http://www.nerrsdata.org; accessed 3 December 2024.
+
+Parker, M., & Bricker, S. (2020). Sustainable Oyster Aquaculture, Water Quality Improvement, and Ecosystem Service Value Potential in Maryland Chesapeake Bay. Journal of Shellfish Research, 39(2), 269–281. https://doi.org/10.2983/035.039.0208
+
+Pernet, F., Tremblay, R., Comeau, L., & Guderley, H. (2007). Temperature adaptation in two bivalve species from different thermal habitats: Energetics and remodelling of membrane lipids. Journal of Experimental Biology, 210(17), 2999–3014. https://doi.org/10.1242/jeb.006007
+
+Porter, E. T., & Breitburg, D. L. (2016). Eastern oyster, Crassostrea virginica, valve gape behavior under diel-cycling hypoxia. Marine Biology, 163(10), 218. https://doi.org/10.1007/s00227-016-2980-1
+
+Posadas, B. C. (2023). The U.S. Oyster Aquaculture Industry is Expected to Grow in the Next Decade (Vol 13, No. 1; Mississippi MarketMaker Newsletter). http://extension.msstate.edu/newsletters/mississippi-marketmaker/2023/vol-13-no-1-the-us-oyster-aquaculture-industry-expected
+
+R Core Team. 2024. R: A language and environment for statistical computing. R Foundation for Statistical Computing. Vienna, Austria.
+
+Sluyts, H., Van Hoof, F., Cornet, A., & Paulussen, J. (1996). A dynamic new alarm system for use in biological early warning systems. Environmental Toxicology and Chemistry, 15(8), 1317–1323. https://doi.org/10.1002/etc.5620150809
+
+Venables WN, Ripley BD (2002). Modern Applied Statistics with S, Fourth edition. Springer, New York. ISBN 0-387-95457-0, https://www.stats.ox.ac.uk/pub/MASS4/.
+
+Zu Ermgassen, P. S. E., Spalding, M. D., Blake, B., Coen, L. D., Dumbauld, B., Geiger, S., Grabowski, J. H., Grizzle, R., Luckenbach, M., McGraw, K., Rodney, W., Ruesink, J. L., Powers, S. P., & Brumbaugh, R. (2012). Historical ecology with real numbers: Past and present extent and biomass of an imperilled estuarine habitat. Proceedings of the Royal Society B: Biological Sciences, 279(1742), 3393–3400. https://doi.org/10.1098/rspb.2012.0313
+
+
+
+
+
+
